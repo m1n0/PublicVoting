@@ -3,15 +3,23 @@
 function tropo_ask() {
   $tropo = new Tropo();
 
+  $node = node_load(2);
+
+  $choices = array();
+  foreach ($node->choice as $key => $value) {
+    $choices[] = $value['chtext'] . '(' . $value['chid'] . ', ' . $value['chtext'] . ')';
+  }
+
+
   $options = array(
     "attempts" => 3,
     "bargein" => true,
-    "choices" => "[1 DIGITS]",
+    "choices" => implode(',', $choices),
     "name" => "id",
     "timeout" => 5
   );
 
-  $node = node_load(2);
+
 
   $tropo->say($node->title);
 
