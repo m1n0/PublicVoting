@@ -29,5 +29,18 @@ function public_voting_menu() {
     'file' => 'includes/public_voting.type.inc',
   );
 
+  $items['tropo/test'] = array(
+    'page callback' => 'public_voting_vote',
+    'access arguments' => array('access content'),
+    'file' => 'includes/public_voting.type.inc',
+  );
+
   return $items;
+}
+
+function public_voting_vote()
+{
+    $poll = node_load(2);
+    print_r($poll);
+    die;
 }
