@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implementation of hook_init().
+ */
+function public_voting_init() {
+  require_once 'tropo/tropo.class.php';
+
+
+}
+
+/**
+ * Implementation of hook_menu().
+ *
+ * @return An array of menu items.
+ */
+function public_voting_menu() {
+  $items = array();
+
+  $items['tropo/ask'] = array(
+    'page callback' => 'tropo_ask',
+    'access arguments' => array('access content'),
+    'file' => 'includes/public_voting.type.inc',
+  );
+
+  $items['tropo/result'] = array(
+    'page callback' => 'tropo_result',
+    'access arguments' => array('access content'),
+    'file' => 'includes/public_voting.type.inc',
+  );
+
+  return $items;
+}

@@ -1,0 +1,6 @@
+name = public_voting
+description = testting
+core = 7.x
+package = custom
+version = 0.1
+#dependencies[] =
