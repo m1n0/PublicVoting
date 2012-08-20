@@ -8,7 +8,7 @@ function tropo_ask() {
 
   $tropo->ask("Please enter your 5 digit zip code.", $options);
 
-  $tropo->on(array("event" => "continue", "next" => "get_zip_code.php?uri=end", "say" => "Please hold."));
+  $tropo->on(array("event" => "continue", "next" => url('tropo/result.json'), "say" => "Please hold."));
   $tropo->on(array("event" => "error", "next" => "get_zip_code.php?uri=error", "say" => "An error has occured."));
 
 
@@ -16,7 +16,7 @@ function tropo_ask() {
 }
 
 
-function tropo_continue() {
+function tropo_result() {
   $tropo = new Tropo();
   $tropo->say("you sucker");
   $tropo->renderJson();
