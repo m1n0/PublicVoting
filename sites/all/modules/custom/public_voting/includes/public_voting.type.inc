@@ -7,7 +7,7 @@ function tropo_ask() {
 
   $choices = array();
   foreach ($node->choice as $key => $value) {
-    $choices[] = $value['chtext'] . '(' . $value['chid'] . ', ' . $value['chtext'] . ')';
+    $choices[] = $value['chid'] . '(' . $value['chid'] . ', ' . $value['chtext'] . ')';
   }
 
   $options = array(
@@ -26,7 +26,7 @@ function tropo_ask() {
 
   $tropo->ask('', $options);
 
-  $tropo->on(array("event" => "continue", "next" => url('tropo/result.json'), "say" => "Thanks for your answer."));
+  $tropo->on(array("event" => "continue", "next" => url('tropo/result.json')));
   $tropo->on(array("event" => "error", "next" => url('tropo/error.json'), "say" => ""));
 
 
