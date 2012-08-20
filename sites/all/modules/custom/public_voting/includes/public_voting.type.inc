@@ -35,6 +35,10 @@ function tropo_ask() {
 
 
 function tropo_result() {
+  global $user;
+
+  $user = user_load(1);
+
   $tropo = new Tropo();
 
   $result = new Result();
