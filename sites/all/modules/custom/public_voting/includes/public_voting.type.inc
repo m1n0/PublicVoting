@@ -10,7 +10,6 @@ function tropo_ask() {
     $choices[] = $value['chtext'] . '(' . $value['chid'] . ', ' . $value['chtext'] . ')';
   }
 
-
   $options = array(
     "attempts" => 3,
     "bargein" => true,
@@ -18,8 +17,6 @@ function tropo_ask() {
     "name" => "id",
     "timeout" => 5
   );
-
-
 
   $tropo->say($node->title);
 
@@ -44,6 +41,18 @@ function tropo_result() {
 	$id = $result->getValue();
 
   $tropo->say($id);
+
+
+  $tropo->renderJson();
+}
+
+function tropo_error() {
+  $tropo = new Tropo();
+
+  $result = new Result();
+	$id = $result->getValue();
+
+  $tropo->say($id . " is an invalid option!");
 
 
   $tropo->renderJson();

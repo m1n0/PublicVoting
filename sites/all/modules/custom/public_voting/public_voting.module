@@ -27,6 +27,12 @@ function public_voting_menu() {
         'file' => 'includes/public_voting.type.inc',
     );
 
+    $items['tropo/error.json'] = array(
+        'page callback' => 'tropo_error',
+        'access arguments' => array('access content'),
+        'file' => 'includes/public_voting.type.inc',
+    );
+
     return $items;
 }
 
