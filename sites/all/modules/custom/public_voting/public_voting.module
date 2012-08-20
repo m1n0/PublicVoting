@@ -17,13 +17,13 @@ function public_voting_init() {
 function public_voting_menu() {
   $items = array();
 
-  $items['tropo/ask'] = array(
+  $items['tropo/ask.json'] = array(
     'page callback' => 'tropo_ask',
     'access arguments' => array('access content'),
     'file' => 'includes/public_voting.type.inc',
   );
 
-  $items['tropo/result'] = array(
+  $items['tropo/result.json'] = array(
     'page callback' => 'tropo_result',
     'access arguments' => array('access content'),
     'file' => 'includes/public_voting.type.inc',
