@@ -14,3 +14,10 @@ function tropo_ask() {
 
   $tropo->renderJson();
 }
+
+
+function tropo_continue() {
+  $tropo = new Tropo();
+  $tropo->say("you sucker");
+  $tropo->renderJson();
+}
