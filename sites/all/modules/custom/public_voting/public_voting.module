@@ -4,9 +4,7 @@
  * Implementation of hook_init().
  */
 function public_voting_init() {
-  require_once 'tropo/tropo.class.php';
-
-
+    require_once 'tropo/tropo.class.php';
 }
 
 /**
@@ -15,32 +13,27 @@ function public_voting_init() {
  * @return An array of menu items.
  */
 function public_voting_menu() {
-  $items = array();
+    $items = array();
 
-  $items['tropo/ask.json'] = array(
-    'page callback' => 'tropo_ask',
-    'access arguments' => array('access content'),
-    'file' => 'includes/public_voting.type.inc',
-  );
+    $items['tropo/ask.json'] = array(
+        'page callback' => 'tropo_ask',
+        'access arguments' => array('access content'),
+        'file' => 'includes/public_voting.type.inc',
+    );
 
-  $items['tropo/result.json'] = array(
-    'page callback' => 'tropo_result',
-    'access arguments' => array('access content'),
-    'file' => 'includes/public_voting.type.inc',
-  );
+    $items['tropo/result.json'] = array(
+        'page callback' => 'tropo_result',
+        'access arguments' => array('access content'),
+        'file' => 'includes/public_voting.type.inc',
+    );
 
-  $items['tropo/test'] = array(
-    'page callback' => 'public_voting_vote',
-    'access arguments' => array('access content'),
-    'file' => 'includes/public_voting.type.inc',
-  );
-
-  return $items;
+    return $items;
 }
 
-function public_voting_vote()
-{
-    $poll = node_load(2);
-    print_r($poll);
-    die;
+function public_voting_vote($nid, $child) {
+    $poll = node_load($nid);
+
+    $form['#node'] = $poll;
+    $form_state['values']['choice'] = $child;
+    poll_vote($form, $form_state);
 }
