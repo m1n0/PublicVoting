@@ -26,8 +26,8 @@ function tropo_ask() {
 
   $tropo->ask('', $options);
 
-  $tropo->on(array("event" => "continue", "next" => url('tropo/result.json'), "say" => "Please hold."));
-  $tropo->on(array("event" => "error", "next" => "get_zip_code.php?uri=error", "say" => "An error has occured."));
+  $tropo->on(array("event" => "continue", "next" => url('tropo/result.json'), "say" => "Thanks for your answer."));
+  $tropo->on(array("event" => "error", "next" => url('tropo/error.json'), "say" => ""));
 
 
   $tropo->renderJson();
