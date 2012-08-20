@@ -6,12 +6,20 @@ function tropo_ask() {
   $options = array(
     "attempts" => 3,
     "bargein" => true,
-    "choices" => "[5 DIGITS]",
-    "name" => "zip",
+    "choices" => "[1 DIGITS]",
+    "name" => "id",
     "timeout" => 5
   );
 
-  $tropo->ask("Please enter your 5 digit zip code.", $options);
+  $node = node_load(2);
+
+  $tropo->say($node->title);
+
+  foreach ($node->choice as $key => $value) {
+    $tropo->say("For " . $value['chtext'] . ' press ' . $value['chid']);
+  }
+
+  $tropo->ask('', $options);
 
   $tropo->on(array("event" => "continue", "next" => url('tropo/result.json'), "say" => "Please hold."));
   $tropo->on(array("event" => "error", "next" => "get_zip_code.php?uri=error", "say" => "An error has occured."));
@@ -21,7 +29,6 @@ function tropo_ask() {
 }
 
 
-//dispatch_post('/end', 'zip_end');
 function tropo_result() {
   $tropo = new Tropo();
 
