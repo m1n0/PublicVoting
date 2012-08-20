@@ -42,9 +42,14 @@ function tropo_result() {
 
   $tropo->say($id);
 
+  public_voting_vote(2, $id);
+
 
   $tropo->renderJson();
 }
+
+
+
 
 function tropo_error() {
   $tropo = new Tropo();
